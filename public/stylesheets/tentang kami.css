@@ -1,0 +1,230 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: radial-gradient(circle at left, #383737, #161616);
+  color: #fff;
+  padding: 5px 40px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin-bottom: 1px;
+}
+
+.nav-links li {
+  margin-right: -8px;
+}
+
+.nav-links li:last-child {
+  margin-right: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  justify-content: space-between;
+  margin-right: 2px;
+  padding: 25px;
+  margin-left: 5px;
+  left: 10px;
+  
+}
+
+.nav-links a:hover{
+    background: radial-gradient(circle at left, #383737, #161616);
+  border-bottom: 2px solid goldenrod;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.login-button {
+  padding: 6px 24px;
+  border: 2px solid #fff;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+
+}
+.login-button:active {
+  transform: scale(0.98);
+}
+
+.signup-button {
+  padding: 6px 24px;
+  border: 2px solid #fff;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+
+}
+.signup-button:active {
+  transform: scale(0.98);
+}
+
+.section_top {
+  color: var(--text-color);
+  background: radial-gradient(circle at right, #383737, #161616);
+  padding-top: 20px;
+  padding-bottom: 135px;
+}
+
+.Title {
+  font-size: 50px;
+  font-weight: 600;
+  padding-top: 50px;
+  color: #cac7c7;
+  padding-left: 60px;
+}
+
+.Konten {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #f1f1f1;
+  padding-left: 60px;
+}
+
+.foto{
+  right: 0;
+  position: absolute;
+  top: 0;
+  margin-top: 100px;
+  width: 300px;
+  margin-right: 100px;
+  border-radius: 20px;
+  padding-top: 10px;
+  width: max-content;
+}
+
+#section_bottom_left {
+  padding-top: 30px;
+  background: radial-gradient(circle at right, #383737, #161616);
+  padding-left : 50px;
+  padding-right: 50px;
+  padding-bottom: 80px;
+  display: flex;
+  position: justify;
+  justify-content: space-around;
+  align-items: center;
+  font-family: 'Helvetica';
+}
+
+#title_visi {
+  color: silver;
+  float:left;
+  padding-right: 80px;
+  padding-left: 100px;
+}
+
+#title_misi {
+  color: silver;
+  float:right;
+  padding-right: 100px;
+  padding-left: 80px;
+} 
+
+.vl {
+border-left: 5px solid rgb(255, 255, 255);
+height: 150px;
+border-radius: 20px;
+position: absolute;
+left: 50%;
+margin-left: -3px;
+top: 0;
+opacity: 60%;
+margin-top: 620px;
+}
+
+.show {
+  display: block;
+}
+
+.show {
+    display: block;
+}
+
+footer {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    background: radial-gradient(circle at left, #383737, #161616);
+    padding-bottom: 100px;
+  
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-section {
+    text-align: center;
+    padding-bottom: 50px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding-bottom: 45px;
+  }
+  
+  .icon{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding-bottom: 20px;
+    align-items: center;  
+    margin-left: 580px;
+  }
+  
+  .icon a {
+    position: relative;
+    color: var(--primary-color);
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    display: block;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: black;
+    background-color: white;
+    line-height: 60px;
+    margin: 0 15px;
+    border-radius: 50%;
+    box-shadow: 0 5px 4px rgba(0,0,0,0.5);
+    transition: 0.5s ease;
+  }
+  
+  .icon a:hover {
+    color:var(--secondary-color);
+    color: white;
+    transform: translate(0, -30px);
+    box-shadow: 0 20px 8px rgba(0,0,0,0.7);
+  }
