@@ -71,20 +71,6 @@ body{
   transform: scale(0.98);
 }
 
-.signup-button {
-  padding: 6px 24px;
-  border: 2px solid #fff;
-  background: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-
-}
-.signup-button:active {
-  transform: scale(0.98);
-}
-
 .section_top {
   color: var(--text-color);
   background: radial-gradient(circle at right, #383737, #161616);

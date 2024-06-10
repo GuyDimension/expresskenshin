@@ -1,90 +1,87 @@
 body{
-    margin: 0;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: radial-gradient(circle at left, #383737, #161616);
-  color: #fff;
-  padding: 5px 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background:linear-gradient(rgba(3, 3, 3, 0.9), rgba(4, 4, 4, 0.9));
+color: #090909;
+padding: 5px 40px;
+border-bottom: 0.5px solid #fcfbfb;
+border-top: 0.5px solid #faf8f8;
 }
 
 .navbar-left {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 
 .nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  margin-bottom: 1px;
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+margin-bottom: 1px;
 }
 
 .nav-links li {
-  margin-right: -8px;
+margin-right: -8px;
 }
 
 .nav-links li:last-child {
-  margin-right: 30px;
+margin-right: 30px;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: #fff;
-  display: inline-block;
-  justify-content: space-between;
-  margin-right: 2px;
-  padding: 25px;
-  margin-left: 5px;
-  left: 10px;
-  
+text-decoration: none;
+color: #fffefe;
+display: inline-block;
+justify-content: space-between;
+margin-right: 2px;
+padding: 25px;
+margin-left: 5px;
+left: 10px;
+
 }
 
 .nav-links a:hover{
-    background: radial-gradient(circle at left, #383737, #161616);
-  border-bottom: 2px solid goldenrod;
+background-color: radial-gradient(circle at left, #574301, #070707) ;
+border-bottom: 2px solid goldenrod;
 }
 
 .navbar-right {
-  display: flex;
-  align-items: center;
+display: flex;
+align-items: center;
 }
 
 .login-button {
-  padding: 6px 24px;
-  border: 2px solid #fff;
-  background: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-  margin-right: 20px;
+padding: 6px 24px;
+border: 2px solid #fafafa;
+background: transparent;
+border-radius: 6px;
+cursor: pointer;
+color: #fefcfc;
+text-decoration: none;
+margin-right: 20px;
+letter-spacing: 1px;
 
 }
 .login-button:active {
-  transform: scale(0.98);
+transform: scale(0.98);
 }
 
-.signup-button {
-  padding: 6px 24px;
-  border: 2px solid #fff;
-  background: transparent;
-  border-radius: 6px;
-  cursor: pointer;
-  color: #fff;
-  text-decoration: none;
-
+.login-button:hover{
+background-color: #c0c000;
+color: #161616;
+box-shadow: 0 0 5px rgb(204, 153, 0),
+            0 0 25px rgb(204, 153, 0),
+            0 0 50px rgb(204, 153, 0),
+            0 0 200px rgb(204, 153, 0);
 }
-.signup-button:active {
-  transform: scale(0.98);
-}
-
 .section_top {
   color: var(--text-color);
   background: radial-gradient(circle at right, #383737, #161616);
