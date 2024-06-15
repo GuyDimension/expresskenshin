@@ -134,6 +134,7 @@ body{
   align-items:center;
   min-height: 100vh;
   background-color: #161616;
+
 }
 
 a {
@@ -153,15 +154,15 @@ a {
 .wrapper a:hover{
   background-color: #03e9f4;
   color: #161616;
-  box-shadow: 0 0 5px #03e9f4,
-              0 0 25px #03e9f4,
-              0 0 50px #03e9f4,
-              0 0 200px #03e9f4;
+  box-shadow: 0 0 5px #fcfdfd,
+              0 0 25px #fcfdfd,
+              0 0 50px #fcfdfd,
+              0 0 20px #fcfdfd;
   /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); */
 
 }
 
-a:first-child {
+/* a:first-child {
   filter: hue-rotate(225deg);
 }
 
@@ -246,7 +247,7 @@ a span:nth-child(4) {
   100% {
     bottom: 100%;
   }
-}
+} */
 
 footer {
     background-color: var(--background-color);
@@ -271,6 +272,22 @@ footer {
     padding-bottom: 45px;
   }
   
+  .section-with-image{
+    position: relative;
+    }
+    
+    .section-with-image .content {
+    /* Atur gaya konten di dalam section */
+    }
+    
+    .section-with-image img {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 10%;
+    opacity: 0.2;
+    }
+    
   .icon{
     display: flex;
     justify-content: center;
