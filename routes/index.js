@@ -26,6 +26,8 @@ router.get('/topup', function(req, res) {
   res.render('topup');
 });
 
-
+router.get('/tentangkami', function(req,res) {
+  res.render('tentangkami');
+});
 
 module.exports = router;
