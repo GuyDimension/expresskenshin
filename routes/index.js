@@ -30,4 +30,8 @@ router.get('/tentangkami', function(req,res) {
   res.render('tentangkami');
 });
 
+router.get('/Login', function(req, res) {
+  res.render('Login');
+});
+
 module.exports = router;

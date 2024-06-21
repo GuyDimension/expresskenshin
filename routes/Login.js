@@ -1,23 +1,57 @@
 var express = require('express');
 var router = express.Router();
 
-// Menampilkan halaman login
-router.get('/Login', function(req, res) {
-  res.render('Login'); // Render view 'login.ejs'
+var database = require('../database');
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express', session : req.session });
 });
 
-// Memproses data login
-router.post('/Login', function(req, res) {
-  const { username, password } = req.body;
+router.post('/Login', function(request, response, next){
 
-  // Lakukan validasi dan autentikasi
-  if (username === 'user' && password === 'password') { // Contoh validasi sederhana
-    // Jika berhasil login, redirect ke halaman beranda atau dashboard
-    res.redirect('/');
-  } else {
-    // Jika gagal login, kembali ke halaman login dengan pesan error
-    res.render('Login', { error: 'Invalid username or password' });
-  }
+    var user_email_address = request.body.user_email_address;
+
+    var user_password = request.body.user_password;
+
+    if(user_email_address && user_password)
+    {
+        query = `
+        SELECT * FROM user_login 
+        WHERE user_email = "${user_email_address}"
+        `;
+
+        database.query(query, function(error, data){
+
+            if(data.length > 0)
+            {
+                for(var count = 0; count < data.length; count++)
+                {
+                    if(data[count].user_password == user_password)
+                    {
+                        request.session.user_id = data[count].user_id;
+
+                        response.redirect("/");
+                    }
+                    else
+                    {
+                        response.send('Incorrect Password');
+                    }
+                }
+            }
+            else
+            {
+                response.send('Incorrect Email Address');
+            }
+            response.end();
+        });
+    }
+    else
+    {
+        response.send('Please Enter Email Address and Password Details');
+        response.end();
+    }
+
 });
 
 module.exports = router;
