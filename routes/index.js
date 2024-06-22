@@ -34,4 +34,15 @@ router.get('/Login', function(req, res) {
   res.render('Login');
 });
 
+router.get('/', function(req, res, next) {
+  connection.query('SELECT * FROM top_up ORDER BY id DESC', function (err, rows) {
+    if (err) {
+      req.flash('error', err);
+      res.render('index', {title: 'Express', data: ''});
+    } else {
+        res.render('index', {title: 'Express', data: rows});
+    }
+  })
+});
+
 module.exports = router;
