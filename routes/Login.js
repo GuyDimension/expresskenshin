@@ -1,57 +1,46 @@
 var express = require('express');
 var router = express.Router();
+var connection = require('../library/database'); //ganti database mksudnya gimana?
+var bcrypt = require('bcrypt'); // install ketik pnpm install bcrypt
 
-var database = require('../database');
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express', session : req.session });
+router.get('/Login', function(req, res, next) {
+  res.render('Login', { title: 'Login' });
 });
 
-router.post('/Login', function(request, response, next){
+router.post('/', function(req, res, next) {
+  var username = req.body.username;
+  var password = req.body.password;
 
-    var user_email_address = request.body.user_email_address;
-
-    var user_password = request.body.user_password;
-
-    if(user_email_address && user_password)
-    {
-        query = `
-        SELECT * FROM user_login 
-        WHERE user_email = "${user_email_address}"
-        `;
-
-        database.query(query, function(error, data){
-
-            if(data.length > 0)
-            {
-                for(var count = 0; count < data.length; count++)
-                {
-                    if(data[count].user_password == user_password)
-                    {
-                        request.session.user_id = data[count].user_id;
-
-                        response.redirect("/");
-                    }
-                    else
-                    {
-                        response.send('Incorrect Password');
-                    }
-                }
-            }
-            else
-            {
-                response.send('Incorrect Email Address');
-            }
-            response.end();
-        });
-    }
-    else
-    {
-        response.send('Please Enter Email Address and Password Details');
-        response.end();
+  connection.query('SELECT * FROM user WHERE email = ?', [username], function(err, results) {
+    if (err) {
+      console.error('Database query error: ' + err.stack);
+      return res.redirect('/Login');
     }
 
+    if (results.length > 0) {
+      var user = results[0];
+      bcrypt.compare(password, user.password, function(err, isMatch) {
+        if (err) {
+          console.error('Error comparing passwords: ' + err.stack);
+          return res.redirect('/Login');
+        }
+
+        if (isMatch) {
+          if (user.email === 'admin@gmail.com') {
+            req.session.user = { username: user.email, role: 'admin' };
+            res.redirect('/form');
+          } else {
+            req.session.user = { username: user.email, role: 'user' };
+            res.redirect('/frontend');
+          }
+        } else {
+          res.redirect('/Login');
+        }
+      });
+    } else {
+      res.redirect('/Login');
+    }
+  });
 });
 
 module.exports = router;
