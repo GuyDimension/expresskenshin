@@ -3,13 +3,55 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var dotenv = require('dotenv');
+var mysql = require('mysql');
+var flash = require('express-flash');
+var session = require('express-session');
+var bodyParser = require('body-parser');
 
+dotenv.config({ path: './.env' });
+
+const port = 3000;
+
+let connection = mysql.createConnection({
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process. env.DATABASE_PASS,
+  database: process.env.DATABASE
+});
+
+connection.connect((error) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("MySQL Connected...");
+  }
+});
+
+//Middleware for session and flash messages
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUnlimited: true,
+  cookie: {secure: true}
+}));
+
+//Middleware for body parse
+app.use(bodyParser.urlencoded({extended: false}));
+
+//Global variables for flash messages
+app.use(function(req, res, next) {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+var postRouter = require('./routes/post');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var LoginRouter = require('./routes/Login');
 var registerRouter = require('./routes/register');
-// var jokiRouter = require('./routes/joki');
-
+var jokiRouter = require('./routes/joki');
 var app = express();
 
 // view engine setup
