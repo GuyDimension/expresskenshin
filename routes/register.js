@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  var username = req.body.username;
+  var email = req.body.email;
   var password = req.body.password;
 
   bcrypt.hash(password, 10, function(err, hashedPassword) {
@@ -17,7 +17,7 @@ router.post('/', function(req, res, next) {
       return res.redirect('/register');
     }
 
-    var user = { email: username, password: hashedPassword };
+    var user = { email: email, password: hashedPassword };
 
 
     connection.query('INSERT INTO user SET ?', user, function(err, results) {
@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
         return res.redirect('/register');
       }
 
-      res.redirect('/Login');
+      res.redirect('/login');
     });
   });
 });
