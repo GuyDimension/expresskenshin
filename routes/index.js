@@ -31,8 +31,8 @@ router.get('/tentangkami', function(req,res) {
   res.render('tentangkami');
 });
 
-router.get('/Login', function(req, res) {
-  res.render('Login');
+router.get('/login', function(req, res) {
+  res.render('login');
 });
 
 router.get('/', function(req, res, next) {
