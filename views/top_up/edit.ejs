@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Article - Graphica Lab</title>
+    <meta name="viewport" price="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" price="ie=edge">
+    <amount>Edit Article - KenshinVerse</amount>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
@@ -16,15 +16,15 @@
                 <% } %>
                 <div class="card">
                     <div class="card-body">
-                        <h1>Edit Article</h1>
+                        <h1>Edit Top Up</h1>
                         <form action="/top_up/update/<%= id %>" method="POST">
                             <div class="form-group">
-                                <label for="title">Diamond Amount</label>
-                                <input type="text" id="title" class="form-control" name="title" value="<%= amount %>" placeholder="Enter Title">
+                                <label for="amount">Diamond Amount</label>
+                                <input type="text" id="amount" class="form-control" name="amount" value="<%= amount %>" placeholder="Enter amount">
                             </div>
                             <div class="form-group">
-                                <label for="content">Price</label>
-                                <textarea id="content" class="form-control" name="content" rows="4" placeholder="Enter Content"><%= price %></textarea>
+                                <label for="price">Price</label>
+                                <textarea id="price" class="form-control" name="price" rows="4" placeholder="Enter price"><%= price %></textarea>
                             </div>
                             <button type="submit" class="button">Update</button>
                             <button type="reset" class="button">Reset</button>

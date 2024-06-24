@@ -2,16 +2,18 @@ var express = require('express');
 var router = express.Router();
 var connection = require('../library/database');
 
+// Route untuk menampilkan semua data top_up
 router.get('/', (req, res, next) => {
   connection.query('SELECT * FROM top_up', (err, rows) => {
     if (err) {
       req.flash('error', err);
-      res.render('top_up/index', { data: [] });
+      res.render('top_up/index', { data: [] }); // Mengirimkan array kosong jika terjadi error
     } else {
-      res.render('top_up/index', { data: rows });
+      res.render('top_up/index', { data: rows }); // Mengirimkan data rows ke template EJS
     }
   });
 });
+
 
 // router.get('/api/top_up', (req, res, next) => {
 //   connection.query('SELECT * FROM top_up', (err, rows) => {
@@ -57,7 +59,7 @@ router.get('/edit/:id', (req, res, next) => {
     if (err) throw err;
 
     if (rows.length <= 0) {
-      req.flash('error', 'Article not found with id = ' + id);
+      req.flash('error', 'top_up not found with id = ' + id);
       res.redirect('/top_up');
     } else {
       res.render('top_up/edit', {
@@ -97,7 +99,7 @@ router.get('/delete/:id', (req, res, next) => {
       req.flash('error', err);
       res.redirect('/top_up');
     } else {
-      req.flash('success', 'Article deleted successfully! id = ' + id);
+      req.flash('success', 'top_up deleted successfully! id = ' + id);
       res.redirect('/top_up');
     }
   });
