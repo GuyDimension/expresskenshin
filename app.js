@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var postRouter = require('./routes/post');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var LoginRouter = require('./routes/Login');
+var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var top_upRouter = require('./routes/top_up');
 

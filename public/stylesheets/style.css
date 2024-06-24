@@ -439,6 +439,18 @@ opacity: 0.2;
   background-color: #161616;
 }
 
+.top-up {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: #03e9f4;
+  color: #161616;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
 .wrapper a {
   position: relative;
   display: inline-block;
@@ -460,8 +472,6 @@ opacity: 0.2;
               0 0 25px #03e9f4,
               0 0 50px #03e9f4,
               0 0 200px #03e9f4;
-  /* -webkit-box-reflect: below 1px linear-gradient(transparent, #0005); */
-
 }
 
 .wrapper a:first-child {
