@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Top Up</title>
+    <link rel='stylesheet' href='/stylesheets/topup.css' />
+</head>
+<body>
+    <h1>Create New Top Up</h1>
+    <% if (messages && messages.error && messages.error.length > 0) { %>
+        <div class="alert alert-danger" role="alert"><%- messages.error %></div>
+    <% } %>
+    <% if (messages && messages.success && messages.success.length > 0) { %>
+        <div class="alert alert-success" role="alert"><%- messages.success %></div>
+    <% } %>
+    <form action="/top_up/create" method="POST">
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="text" id="amount" name="amount" value="<%= amount %>" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" value="<%= price %>" required>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

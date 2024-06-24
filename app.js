@@ -4,11 +4,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mysql = require('mysql');
+var session = require('express-session');
+var flash = require('connect-flash');
 
+// Inisialisasi aplikasi Express
+var app = express();
+
+// Inisialisasi koneksi database
 let connection = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
-  password: process. env.DATABASE_PASS,
+  password: process.env.DATABASE_PASS,
   database: process.env.DATABASE
 });
 
@@ -20,30 +26,22 @@ connection.connect((error) => {
   }
 });
 
-//Middleware for session and flash messages
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   resave: false,
-//   saveUnlimited: true,
-//   cookie: {secure: true}
-// }));
+// Middleware untuk session dan flash messages
+app.use(session({
+  secret: 'secretKey',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
 
-//Middleware for body parse
-// app.use(bodyParser.urlencoded({extended: false}));
+// Middleware untuk body parser
+app.use(express.urlencoded({ extended: false }));
 
-//Global variables for flash messages
-// app.use(function(req, res, next) {
-//   res.locals.success = req.flash('success');
-//   res.locals.error = req.flash('error');
-//   next();
-// });
-
-var postRouter = require('./routes/post');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var LoginRouter = require('./routes/Login');
-var registerRouter = require('./routes/register');
-var app = express();
+// Global variables untuk flash messages
+app.use(function (req, res, next) {
+  res.locals.messages = req.flash();
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,19 +49,27 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
- 
+
+// Route definitions
+var postRouter = require('./routes/post');
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var LoginRouter = require('./routes/Login');
+var registerRouter = require('./routes/register');
+var top_upRouter = require('./routes/top_up');
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/Login', LoginRouter);
 app.use('/register', registerRouter);
 // app.use('/joki', jokiRouter);
 app.use('/post', postRouter);
+app.use('/top_up', top_upRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res) {
+app.use(function(req, res, next) {
   next(createError(404));
 });
 

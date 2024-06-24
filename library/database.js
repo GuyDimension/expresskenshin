@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
 	host:'localhost',
 	user:'root',
 	password:'',
-	database:'Database_login'
+	database:'kenshin'
 });
 connection.connect(function(error){
 	if(!!error) {

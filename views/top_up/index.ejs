@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KENSHIN VERSE</title>
+    <link rel='stylesheet' href='/stylesheets/topup.css' />
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <div class="logo">
+                <img src="/assets/ken.png" alt="Logo" width="70px" height="70px">
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Beranda</a></li>
+                <li><a href="/tentangkami">Tentang Kami</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <a href="/Login" class="login-button">Sign In</a>
+        </div>
+    </nav>
+
+    <section class="section_top">
+        <h1 class="Title">TOP UP</h1>
+        <p class="Konten">
+            Mau Top up ? <br><br> KENSHIN VERSE aja karena top up diamond di Kenshin Verse harganya murah dengan pelayanan terbaik <br>
+            dan banyak benefit seperti diskon.<br><br> KENSHIN VERSE juga melayani transaksi internasional.
+        </p>
+        <img src="/assets/PLtopup.jpg" alt="image" class="foto" height="350px" width="100px">
+    </section>
+
+    <div class="wrapper">
+        <a href="https://wa.me/6289522453439" target="Halo, permisi saya ingin membeli Weekly Diamond Pass">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            DM
+        </a>
+    </div>
+
+    <section class="section_crud">
+        <h2>Daftar Top Up</h2>
+        <a href="/top_up/create" class="button">Create New Top Up</a>
+        <div class="card-container">
+            <% if (data.length) { %>
+                <% data.forEach(top_up => { %>
+                    <div class="card">
+                        <div class="card-title"><strong>Amount: <%= top_up.amount %></strong></div>
+                        <div class="card-content">Price: <%= top_up.price %></div>
+                        <div class="card-actions">
+                            <a href="/top_up/edit/<%= top_up.id %>" class="button edit-button">Edit</a>
+                            <a href="/top_up/delete/<%= top_up.id %>" class="button delete-button">Delete</a>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No top-ups found</p>
+            <% } %>
+        </div>
+    </section>
+
+    <footer id="Contact">
+        <section class="section-with-image">
+            <div class="content"></div>
+            <img src="/assets/aksara.png" alt="Gambar di Bagian Bawah">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3 style="color: #f0f2f4;">Hubungi Kami</h3>
+                    <ul class="icon">
+                        <a href="https://www.instagram.com/kenshin.verse?igsh=MmV3eTU3OGl6Ymxo" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/6289522453439" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@kenshin.verse?_t=8m0L5mgvZOJ&_r=1" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="section-with-image-a">
+            <div class="content-a"></div>
+            <img src="/assets/aksara.png" alt="Gambar di Bagian Bawah">
+        </section>
+    </footer>
+</body>
+</html>
