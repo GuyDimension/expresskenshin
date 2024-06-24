@@ -67,7 +67,7 @@ router.post('/store', function (req, res, next) {
         }
 
         var formData = {amount, price};
-        connection.query('INSERT INTO post SET ?', formData, function(err, result) {
+        connection.query('INSERT INTO top_up SET ?', formData, function(err, result) {
             if (err) {
                 req.flash('error', 'Gagal menyimpan data, silahkan coba lagi.');
                 console.error('Database Error:', err);
@@ -84,7 +84,7 @@ router.post('/store', function (req, res, next) {
 router.get('/edit/(:id)', function(req, res, next) {
     let id = req.params.id;
 
-    connection.query('SELECT * FROM post WHERE id = ?', [id], function(err, rows, fields) {
+    connection.query('SELECT * FROM top_up WHERE id = ?', [id], function(err, rows, fields) {
         if (err) throw err;
 
         if (rows.length <= 0) {
@@ -140,7 +140,7 @@ router.post('/update/:id', function(req, res, next) {
             price: price
         };
 
-        connection.query('UPDATE post SET ? WHERE id = ?', [formData, id], function(err, result) {
+        connection.query('UPDATE top_up SET ? WHERE id = ?', [formData, id], function(err, result) {
             if (err) {
                 req.flash('error', err);
                 return res.render('post/edit', {
@@ -160,7 +160,7 @@ router.post('/update/:id', function(req, res, next) {
 router.get('/delete/post/(:id)', function(req, res, next) {
     let id = req.params.id;
 
-    connection.query('DELETE FROM post WHERE id = ?', [id], function(err, result) {
+    connection.query('DELETE FROM top_up WHERE id = ?', [id], function(err, result) {
         if (err) {
             req.flash('error', 'Gagal menghapus data, silahkan coba lagi.');
         } else {
