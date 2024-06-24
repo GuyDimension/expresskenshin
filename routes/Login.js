@@ -28,10 +28,10 @@ router.post('/', function(req, res, next) {
           if (isMatch) {
             if (user.email === 'adminkenshin@gmail.com') {
               req.session.user = { username: user.email, role: 'admin' };
-              return res.redirect('/post'); 
+              return res.redirect('/'); 
             } else {
               req.session.user = { username: user.email, role: 'user' };
-              return res.redirect('/frontend');  
+              return res.redirect('/frontend/beranda');  
             }
           } else {
             return res.redirect('/login');

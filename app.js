@@ -56,17 +56,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 var postRouter = require('./routes/post');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var LoginRouter = require('./routes/Login');
+var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var top_upRouter = require('./routes/top_up');
-
+var feRouter = require('./routes/frontend');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/post', postRouter);
 app.use('/top_up', top_upRouter);
-
+app.use('/frontend', feRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
