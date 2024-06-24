@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../library/database'); //ganti database mksudnya gimana?
+var connection = require('../library/database'); 
 var bcrypt = require('bcrypt'); // install ketik pnpm install bcrypt
 
-router.get('/Login', function(req, res, next) {
-  res.render('Login', { title: 'Login' });
+router.get('/', function(req, res, next) {
+  res.render('login', { title: 'Login' });
 });
 
 router.post('/', function(req, res, next) {
@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
   connection.query('SELECT * FROM user WHERE email = ?', [username], function(err, results) {
     if (err) {
       console.error('Database query error: ' + err.stack);
-      return res.redirect('/Login');
+      return res.redirect('/login');
     }
 
     if (results.length > 0) {
@@ -22,23 +22,23 @@ router.post('/', function(req, res, next) {
       bcrypt.compare(password, user.password, function(err, isMatch) {
         if (err) {
           console.error('Error comparing passwords: ' + err.stack);
-          return res.redirect('/Login');
+          return res.redirect('/login');
         }
 
         if (isMatch) {
           if (user.email === 'admin@gmail.com') {
             req.session.user = { username: user.email, role: 'admin' };
-            res.redirect('/form');
+            res.redirect('/form');//ini page / folder backend kau
           } else {
             req.session.user = { username: user.email, role: 'user' };
-            res.redirect('/frontend');
+            res.redirect('/frontend'); //ini page / folder frontend kau
           }
         } else {
-          res.redirect('/Login');
+          res.redirect('/login');
         }
       });
     } else {
-      res.redirect('/Login');
+      res.redirect('/login');
     }
   });
 });
