@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-// view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -62,9 +62,8 @@ var top_upRouter = require('./routes/top_up');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/Login', LoginRouter);
+app.use('/login', loginRouter);
 app.use('/register', registerRouter);
-// app.use('/joki', jokiRouter);
 app.use('/post', postRouter);
 app.use('/top_up', top_upRouter);
 
@@ -74,7 +73,7 @@ app.use(function(req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
